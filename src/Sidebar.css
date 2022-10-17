@@ -5,7 +5,6 @@
   border-radius: 10px;
   text-align: center;
   height: fit-content;
-  margin-top: 10px; /* <- 내가 추가한 값 */
 }
 
 .sidebar__avatar {

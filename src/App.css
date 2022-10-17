@@ -5,5 +5,7 @@
   align-items: center;
 }
 .app__body {
+  max-width: 1200px;
+
   display: flex;
 }
