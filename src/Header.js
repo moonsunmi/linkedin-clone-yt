@@ -9,8 +9,17 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 import "./Header.css";
 import HeaderOption from "./HeaderOption";
+import { useDispatch, useSelector } from "react-redux";
+import { auth } from "./firebase";
+import { logout, selectUser } from "./features/userSlice";
 
 const Header = () => {
+  const dispatch = useDispatch();
+
+  const logoutOfApp = () => {
+    dispatch(logout());
+    auth.signOut();
+  };
   return (
     <div className="header">
       <div className="header__left">
@@ -21,7 +30,7 @@ const Header = () => {
 
         <div className="header__search">
           <SearchIcon />
-          <input type="text" />
+          <input type="text" placeholder="Search" />
         </div>
       </div>
       <div className="header__right">
@@ -30,7 +39,7 @@ const Header = () => {
         <HeaderOption Icon={WorkIcon} title="Job" />
         <HeaderOption Icon={TextsmsIcon} title="Chat" />
         <HeaderOption Icon={NotificationsIcon} title="Notifications" />
-        <HeaderOption Icon={AccountCircleIcon} title="me" />
+        <HeaderOption avatar={true} title="me" onClick={logoutOfApp} />
       </div>
     </div>
   );
